@@ -7,8 +7,9 @@
 \usepackage[cmex10]{amsmath}
 \usepackage{amssymb}
 
-\usepackage{tikz,pgfplots}
-\pgfplotsset{compat=1.12}
+\usepackage{tikz}
+\usepackage{pgfplots}
+
 %
 % *** Algorithm PACKAGES ***
 \usepackage{algorithmic}
@@ -172,48 +173,50 @@ a general Lagrangian interpolation.
 
 \par For multiplicative computations, we calculated very large terms of the irrational number Pi via Chudnovsky’s algorithm. This tested our system’s ability to deal with extremely long decimal values, stateless computational rounds, and homomorphic multiplication of encrypted shares (for the securely private model. Our security-only model was, on average, 950\% faster than the securely private model (5 sigma confidence), 6,300\% faster than VIFF (5 sigma confidence), and 10,700\% faster than FairplayMP (5 sigma confidence. Our securely private model was also faster than both other solutions, by smaller but similar margins. What is really interesting, however, is how our securely private model scales so incredibly well compared to both VIFF and FairplayMP. The reason for this is described in our conclusion.
 
-\begin{figure}[!t]
-\centering
-\hspace*{-1.5cm} 
-\begin{tikzpicture}
-\begin{axis}[
-    compat=newest, %Better label placement
-    ybar = 0.6,
-    width=0.6\textwidth,
-    ymin=0,
-    bar width=6pt,
-    title={End-to-End Speed vs. Industry Solutions},
-    legend style={at={(0.5,-0.225)},
-    anchor=north,legend columns=0},
-    ylabel={Overhead (\%) },
-    x tick label style={rotate=45, anchor=east,font=\small,text width=1.7cm,align=center},
-    xticklabels={Securely Private, Secure, Hadoop}
-    xtick={1,2,3},
-    axis lines*=left,
-    ytick style={draw=none},
-    cycle list={
-        {fill=black!80,draw=black!80},
-        {fill=black!60,draw=black!60},
-        {fill=black!40,draw=black!40}
-    },
-    axis on top,
-    major grid style=white,
-    ymajorgrids,
-    legend style={draw=none,/tikz/every even column/.append style={column sep=0.5cm}}
- \addplot 
-	coordinates {(1, 2.3)};
- \addplot 
-	coordinates {(2, 1.2)};    
- \addplot 
-	coordinates {(3, 1.0)};
-]
-\legend{Best,Average,Worst}
-\end{axis}
-\end{tikzpicture}
-\caption{Throughput Graph}
-\label{graph_through}
-\end{figure}
-\par 
+\par Lastly, we showed that 
+
+% \begin{figure}[!t]
+% \centering
+% \hspace*{-1.5cm} 
+% \begin{tikzpicture}
+% \begin{axis}[
+%     compat=newest, %Better label placement
+%     ybar = 0.6,
+%     width=0.6\textwidth,
+%     ymin=0,
+%     bar width=6pt,
+%     title={End-to-End Speed vs. Industry Solutions},
+%     legend style={at={(0.5,-0.225)},
+%     anchor=north,legend columns=0},
+%     ylabel={Overhead (\%) },
+%     x tick label style={rotate=45, anchor=east,font=\small,text width=1.7cm,align=center},
+%     xticklabels={Securely Private, Secure, Hadoop}
+%     xtick={1,2,3},
+%     axis lines*=left,
+%     ytick style={draw=none},
+%     cycle list={
+%         {fill=black!80,draw=black!80},
+%         {fill=black!60,draw=black!60},
+%         {fill=black!40,draw=black!40}
+%     },
+%     axis on top,
+%     major grid style=white,
+%     ymajorgrids,
+%     legend style={draw=none,/tikz/every even column/.append style={column sep=0.5cm}}
+%  \addplot 
+% 	coordinates {(1, 2.3)};
+%  \addplot 
+% 	coordinates {(2, 1.2)};    
+%  \addplot 
+% 	coordinates {(3, 1.0)};
+% ]
+% \legend{Best,Average,Worst}
+% \end{axis}
+% \end{tikzpicture}
+% \caption{Throughput Graph}
+% \label{graph_through}
+% \end{figure}
+\par Lastly, we tested our system's speed in relation to the Hadoop scheduler. Essentially, instead of distributing normal computational tasks, we had it distribute sMPC-driven computations. The overhead on our fastest model was minimal ($20\%$), while the overhead on our securely private model was managable but significant ($110\%$). These are our most recent findings.
 
 
 \section{Conclusion}
